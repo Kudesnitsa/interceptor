@@ -11,11 +11,7 @@ export class UsersService {
   }
 
   public get(url) {
-    this.http.get(url)
-      .subscribe(
-        data => console.log(data),
-        err => console.log(err)
-      );
+    return this.http.get(url);
   }
 
 }

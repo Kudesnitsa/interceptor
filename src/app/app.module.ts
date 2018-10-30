@@ -1,18 +1,21 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import {TokenInterceptor} from './auth/token.interceptor';
+import {HttpTokenInterceptor} from './auth/token.interceptor';
 
 import {AppComponent} from './app.component';
 import {UsersComponent} from './users/users.component';
 import {FormsModule} from '@angular/forms';
 
 import {HttpClientModule} from '@angular/common/http';
+import {FilterPipe} from './users/filter.pipe';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsersComponent
+    UsersComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,7 @@ import {HttpClientModule} from '@angular/common/http';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
+      useClass: HttpTokenInterceptor,
       multi: true
     }
   ],

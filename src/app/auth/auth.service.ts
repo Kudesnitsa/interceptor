@@ -1,8 +1,10 @@
-import {Injectable} from '@angular/core';
-
-@Injectable()
 export class AuthService {
-  public getToken(): string {
+
+  static getToken(): string {
     return localStorage.getItem('token');
+  }
+
+  static setToken(token: string): string {
+    return localStorage.setItem('token', token);
   }
 }
